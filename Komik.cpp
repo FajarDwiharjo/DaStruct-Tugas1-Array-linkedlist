@@ -46,18 +46,18 @@ void inputKomik() {
     getline(cin, tanggal);
 
     tambahKomik(judul, volume, tanggal);
-    cout << "✅ Komik berhasil ditambahkan!\n";
+    cout << "Komik berhasil ditambahkan!\n";
 }
 
 void tampilkanKomik() {
     if (!head) {
-        cout << "🚫 Belum ada rilisan.\n";
+        cout << "Belum ada rilisan.\n";
         return;
     }
 
     Komik* temp = head;
     int i = 1;
-    cout << "\n📚 Daftar Rilisan Komik:\n";
+    cout << "\nDaftar Rilisan Komik:\n";
     while (temp) {
         cout << i++ << ". " << temp->judul
              << " Vol. " << temp->volume
@@ -78,7 +78,7 @@ void cariKomik() {
     while (temp) {
         if (temp->judul.find(keyword) != string::npos ||
             to_string(temp->volume) == keyword) {
-            cout << "✅ Ditemukan: " << temp->judul << " Vol. "
+            cout << "Ditemukan: " << temp->judul << " Vol. "
                  << temp->volume << " - " << temp->tanggalRilis << endl;
             ditemukan = true;
         }
@@ -86,7 +86,7 @@ void cariKomik() {
     }
 
     if (!ditemukan) {
-        cout << "❌ Komik tidak ditemukan.\n";
+        cout << "Komik tidak ditemukan.\n";
     }
 }
 
@@ -107,13 +107,13 @@ void hapusKomik() {
                 head = temp->next;
             }
             delete temp;
-            cout << "🗑️ Komik berhasil dihapus.\n";
+            cout << "Komik berhasil dihapus.\n";
             return;
         }
         prev = temp;
         temp = temp->next;
     }
-    cout << "❌ Komik tidak ditemukan.\n";
+    cout << "Komik tidak ditemukan.\n";
 }
 
 void simpanKeFile(const string& namaFile) {
@@ -125,13 +125,13 @@ void simpanKeFile(const string& namaFile) {
         temp = temp->next;
     }
     file.close();
-    cout << "💾 Data berhasil disimpan ke file.\n";
+    cout << "Data berhasil disimpan ke file.\n";
 }
 
 void muatDariFile(const string& namaFile) {
     ifstream file(namaFile);
     if (!file) {
-        cout << "⚠️ File tidak ditemukan, mulai dari data kosong.\n";
+        cout << "File tidak ditemukan, mulai dari data kosong.\n";
         return;
     }
 
@@ -146,7 +146,7 @@ void muatDariFile(const string& namaFile) {
     }
 
     file.close();
-    cout << "📂 Data berhasil dimuat dari file.\n";
+    cout << "Data berhasil dimuat dari file.\n";
 }
 
 void hapusSemua() {
@@ -169,7 +169,7 @@ vector<KomikData> linkedListToVector() {
 
 void urutTanggalRilis(Komik* head) {
     if (!head) {
-        cout << "🚫 Belum ada rilisan.\n";
+        cout << "Belum ada rilisan.\n";
         return;
     }
     vector<KomikData> data = linkedListToVector();
@@ -178,7 +178,7 @@ void urutTanggalRilis(Komik* head) {
         return a.tanggalRilis < b.tanggalRilis;
     });
 
-    cout << "\n📅 Urutan Komik Berdasarkan Tanggal Rilis:\n";
+    cout << "\nUrutan Komik Berdasarkan Tanggal Rilis:\n";
     for (int i = 0; i < data.size(); ++i) {
         cout << i + 1 << ". " << data[i].judul << " Vol. " << data[i].volume
              << " - " << data[i].tanggalRilis << endl;
@@ -211,10 +211,10 @@ int main() {
             case 0:
                 simpanKeFile("komik.txt");
                 hapusSemua();
-                cout << "👋 Keluar dari program...\n";
+                cout << "Keluar dari program...\n";
                 break;
             default:
-                cout << "❗ Pilihan tidak valid.\n";
+                cout << "Pilihan tidak valid.\n";
         }
     } while (pilihan != 0);
 
